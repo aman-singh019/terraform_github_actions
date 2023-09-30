@@ -84,11 +84,3 @@ module "nic01" {
     ]
  }
 
-#  ################ mssql vm ###################
-  
-#   module "mssql_vm" {
-#     source = "./modules/SQL_vm"
-#     mssql_vm_variables = var.mssql_vm_variables
-#     depends_on = [ module.vm ]
-    
-#   }

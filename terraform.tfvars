@@ -73,11 +73,11 @@ virtual_machine_variables = {
 
 ################# public ip ###################
  
- public_ip_variables = {
-   "pip01" = {
-     name="pip01"
-     location="eastus"
-     resource_group_name="aman_rg_primary"
-        }
- }
+#  public_ip_variables = {
+#    "pip01" = {
+#      name="pip01"
+#      location="eastus"
+#      resource_group_name="aman_rg_primary"
+#         }
+#  }
 

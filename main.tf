@@ -75,12 +75,12 @@ module "nic01" {
 
  ############### public ip ##############
 
- module "public_ip" {
-   source = "./modules/vm_public_ip"
-   public_ip_variables = var.public_ip_variables
-   depends_on = [ 
-    module.rg,
-    module.vnet
-    ]
- }
+#  module "public_ip" {
+#    source = "./modules/vm_public_ip"
+#    public_ip_variables = var.public_ip_variables
+#    depends_on = [ 
+#     module.rg,
+#     module.vnet
+#     ]
+#  }
 

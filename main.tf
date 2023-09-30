@@ -54,8 +54,8 @@ module "nic01" {
   depends_on = [
     module.rg,
     module.vnet,
-    module.subnet,
-    module.public_ip
+    module.subnet
+    #module.public_ip
   ]
 }
 
@@ -68,8 +68,8 @@ module "nic01" {
       module.rg,
       module.vnet, 
       module.subnet,
-      module.nic01,
-      module.public_ip
+      module.nic01
+      #module.public_ip
     ]
  }
 

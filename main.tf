@@ -26,7 +26,7 @@ module "rg" {
   resource_group_variables = var.resource_group_variables
 }
 
-################### vnet #################
+################### vnet ###############
 
 module "vnet" {
   source                    = "./modules/vnet"

@@ -14,6 +14,7 @@ resource "azurerm_virtual_network" "vnet" {
   location            = var.location
   resource_group_name = format("%s-%s-%s", local.naming_prefix, var.naming_conventions.rg_short_code, each.value["rg_ordinal"])
   address_space       = each.value["address_space"]
+  depends_on = [ azurerm_resource_group.rg ]
 }
 
 resource "azurerm_subnet" "subnet" {

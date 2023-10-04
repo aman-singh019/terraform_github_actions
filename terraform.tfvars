@@ -1,83 +1,46 @@
-resource_group_variables = {
-  "rg01" = {
-    location = "eastus"
-    name     = "aman_rg_primary"
-  }
-  
+naming_conventions = {
+  rg_short_code   = "rg"
+  rg_ordinal      = "01"
+  vnet_short_code = "vnet"
+  snet_short_code = "snet"
+  environment     = "dev"
+  loc_short_code  = "eus"
+  product_code    = "hub"
 }
+##########resource_group######
+rg_variables = {
+  "rg-01" = {
+    rg_ordinal = "01"
+  }
+}
+location = "eastus"
+
 
 #############vnet#############
 
-virtual_network_variables = {
+networks = {
   "my-vnet01" = {
-    address_space       = ["10.6.0.0/16"]
-    location            = "eastus"
-    name                = "HUB_eus_vnet"
-    resource_group_name = "aman_rg_primary"
+    address_space = ["10.0.0.0/16"]
+    vnet_ordinal  = "01"
+    rg_ordinal    = "01"
   }
-  
 }
-################## subnet ###################
-
-subnet_variables = {
-  "subnet01" = {
-    address_prefixes     = ["10.6.1.0/24"]
-    name                 = "subnet01"
-    resource_group_name  = "aman_rg_primary"
-    virtual_network_name = "HUB_eus_vnet"
-  }
-
-}
-
-############ nic ###############
-
-network_interface_variables = {
-  "nic01" = {
-    location             = "eastus"
-    name_ip              = "nic01_ip"
-    name_nic             = "vm_nic01"
-    name_subnet          = "subnet01"
-    resource_group_name  = "aman_rg_primary"
-    virtual_network_name = "HUB_eus_vnet"
-    public_ip_name        = "pip01"
-    resource_group_name_ip = "aman_rg_primary"
+############subnet###################
+subnet = {
+  "s1" = {
+    subnet_ordinal = "01"
+    address_prefix = ["10.0.1.0/24"]
+    vnet_ordinal   = "01"
+    rg_ordinal     = "01"
+  },
+  "s2" = {
+    subnet_ordinal = "02"
+    address_prefix = ["10.0.2.0/24"]
+    vnet_ordinal   = "01"
+    rg_ordinal     = "01"
   }
 
 }
 
-############### VM #################
 
-virtual_machine_variables = {
-  "vm01" = {
-    admin_password = "aman@#123"
-    admin_username = "aman"
-    caching = "ReadWrite"
-    computer_name="vmone"
-    create_option = "FromImage"
-    location = "eastus"
-    managed_disk_type = "Standard_LRS"
-    name_nic = "vm_nic01"
-    name_os_disk = "myosdisk1"
-    name_vm = "AD_VM"
-    offer = "WindowsServer"
-    publisher = "MicrosoftWindowsServer"
-    resource_group_name = "aman_rg_primary"
-    resource_group_name_nic="aman_rg_primary"
-    sku = "2019-Datacenter"
-    version = "latest"
-    vm_size = "Standard_E2s_v3"
-  }
-
-  
-}
-
-################# public ip ###################
- 
-#  public_ip_variables = {
-#    "pip01" = {
-#      name="pip01"
-#      location="eastus"
-#      resource_group_name="aman_rg_primary"
-#         }
-#  }
 

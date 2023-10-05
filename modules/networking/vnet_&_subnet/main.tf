@@ -14,15 +14,19 @@ resource "azurerm_virtual_network" "vnet" {
   location            = var.location
   resource_group_name = format("%s-%s-%s", local.naming_prefix, var.naming_conventions.rg_short_code, each.value["rg_ordinal"])
   address_space       = each.value["address_space"]
-  depends_on = [ azurerm_resource_group.rg ]
+  depends_on          = [azurerm_resource_group.rg]
 }
 
 resource "azurerm_subnet" "subnet" {
   for_each             = var.subnet
   name                 = format("%s-%s-%s", local.naming_prefix, var.naming_conventions.snet_short_code, each.value["subnet_ordinal"])
-  virtual_network_name = format("%s-%s-%s", local.naming_prefix, var.naming_conventions.vnet_short_code, each.value["rg_ordinal"]) ## yeh line rishabh se poochni hai 
-  resource_group_name  = format("%s-%s-%s", local.naming_prefix, var.naming_conventions.rg_short_code, each.value["vnet_ordinal"])
+  virtual_network_name = format("%s-%s-%s", local.naming_prefix, var.naming_conventions.vnet_short_code, each.value["vnet_ordinal"]) ## yeh line rishabh se poochni hai 
+  resource_group_name  = format("%s-%s-%s", local.naming_prefix, var.naming_conventions.rg_short_code, each.value["rg_ordinal"])
   address_prefixes     = each.value["address_prefix"]
   depends_on           = [azurerm_virtual_network.vnet]
 
 }
+
+# output "subnet_id" {
+#   value = azurerm_subnet.subnet.id
+# }

@@ -2,7 +2,7 @@ terraform {
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = "2.64.0"
+      version = "3.75.0"
     }
   }
   backend "azurerm" {
@@ -29,6 +29,14 @@ module "vnet_subnet" {
   rg_variables       = var.rg_variables
   naming_conventions = var.naming_conventions
 
+}
 
+module "vm" {
+  source                    = "./modules/virtual_machine"
+  virtual_machine_variables = var.virtual_machine_variables
+  #network_interface_variables = var.network_interface_variables
+  location           = var.location
+  naming_conventions = var.naming_conventions
+  depends_on         = [module.vnet_subnet]
 }
 

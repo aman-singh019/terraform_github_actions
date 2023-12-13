@@ -1,0 +1,9 @@
+trigger:
+- master  # Specify the branch you want to trigger the pipeline on
+ 
+pool:
+  name: acca-internal-management-vmss-ukso-dev  # Replace with your agent pool name
+ 
+steps:
+- script: echo $HOSTNAME  # Replace with your build steps
+ 
